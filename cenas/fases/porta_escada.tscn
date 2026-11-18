@@ -213,7 +213,7 @@ offset = Vector2(0, -500)
 polygon = PackedVector2Array(92, 416, 134, 502, 50, 502)
 base = 500.0
 
-[node name="Bia" parent="."instance=ExtResource("3_bia")]
+[node name="Bia" parent="." instance=ExtResource("3_bia")]
 position = Vector2(210, 488)
 
 [node name="Ambiente" type="AudioStreamPlayer" parent="." groups=["som_em_loop"]]

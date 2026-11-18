@@ -1,0 +1,234 @@
+[gd_scene load_steps=28 format=3]
+
+[ext_resource type="Script" path="res://scripts/fases/fase.gd" id="1_fase"]
+[ext_resource type="Texture2D" path="res://assets/cenarios/sala_2026.png" id="2_fundo"]
+[ext_resource type="PackedScene" path="res://cenas/personagens/bia.tscn" id="3_bia"]
+[ext_resource type="AudioStream" path="res://assets/audio/musica/02_ambiente_base.ogg" id="4_amb"]
+[ext_resource type="PackedScene" path="res://cenas/ui/hud.tscn" id="6_hud"]
+[ext_resource type="Script" path="res://scripts/objetos/interagivel.gd" id="7_inter"]
+[ext_resource type="Script" path="res://scripts/objetos/porta.gd" id="8_porta"]
+[ext_resource type="Script" path="res://scripts/fases/entrada.gd" id="9_entrada"]
+[ext_resource type="Script" path="res://scripts/fases/recorte.gd" id="10_recorte"]
+[ext_resource type="AudioStream" path="res://assets/audio/ambiente/21_ar_condicionado.wav" id="s0"]
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeTopo"]
+size = Vector2(960, 245)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeEsquerda"]
+size = Vector2(40, 640)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeDireita"]
+size = Vector2(30, 640)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeBaixoEsquerda"]
+size = Vector2(108, 140)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeBaixoDireita"]
+size = Vector2(756, 140)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_FundoDaPorta"]
+size = Vector2(100, 56)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_Planta"]
+size = Vector2(44, 16)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_MesaProfessor"]
+size = Vector2(116, 30)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_Lixeira"]
+size = Vector2(30, 60)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_Armario"]
+size = Vector2(66, 61)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_CarteiraVelha"]
+size = Vector2(76, 34)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_CadeirasEsquerda"]
+size = Vector2(276, 150)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_CadeirasDireita"]
+size = Vector2(266, 150)
+
+[sub_resource type="RectangleShape2D" id="A_Lousa"]
+size = Vector2(140, 20)
+
+[sub_resource type="RectangleShape2D" id="A_CarteiraVelha"]
+size = Vector2(76, 20)
+
+[sub_resource type="RectangleShape2D" id="P_SaidaCorredor"]
+size = Vector2(90, 20)
+
+[sub_resource type="RectangleShape2D" id="P_PortaLateral"]
+size = Vector2(24, 90)
+
+[node name="SalaAula2026" type="Node2D"]
+script = ExtResource("1_fase")
+
+[node name="Escuridao" type="CanvasModulate" parent="."]
+color = Color(0.1, 0.11, 0.18, 1)
+
+[node name="Fundo" type="Sprite2D" parent="."]
+texture = ExtResource("2_fundo")
+centered = false
+
+[node name="Paredes" type="StaticBody2D" parent="."]
+
+[node name="ParedeTopo" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(480, 122)
+shape = SubResource("S_Paredes_ParedeTopo")
+
+[node name="ParedeEsquerda" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(20, 320)
+shape = SubResource("S_Paredes_ParedeEsquerda")
+
+[node name="ParedeDireita" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(945, 320)
+shape = SubResource("S_Paredes_ParedeDireita")
+
+[node name="ParedeBaixoEsquerda" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(54, 570)
+shape = SubResource("S_Paredes_ParedeBaixoEsquerda")
+
+[node name="ParedeBaixoDireita" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(582, 570)
+shape = SubResource("S_Paredes_ParedeBaixoDireita")
+
+[node name="FundoDaPorta" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(156, 612)
+shape = SubResource("S_Paredes_FundoDaPorta")
+
+[node name="Moveis" type="StaticBody2D" parent="."]
+
+[node name="Planta" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(88, 282)
+shape = SubResource("S_Moveis_Planta")
+
+[node name="MesaProfessor" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(338, 300)
+shape = SubResource("S_Moveis_MesaProfessor")
+
+[node name="Lixeira" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(418, 275)
+shape = SubResource("S_Moveis_Lixeira")
+
+[node name="Armario" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(838, 275.5)
+shape = SubResource("S_Moveis_Armario")
+
+[node name="CarteiraVelha" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(72, 445)
+shape = SubResource("S_Moveis_CarteiraVelha")
+
+[node name="CadeirasEsquerda" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(308, 415)
+shape = SubResource("S_Moveis_CadeirasEsquerda")
+
+[node name="CadeirasDireita" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(662, 415)
+shape = SubResource("S_Moveis_CadeirasDireita")
+
+[node name="Interagiveis" type="Node2D" parent="."]
+
+[node name="Lousa" type="Area2D" parent="Interagiveis"]
+position = Vector2(520, 258)
+script = ExtResource("7_inter")
+texto = "A lousa ainda tem a matéria de hoje. Alguém esqueceu de apagar."
+altura_do_aviso = 60.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/Lousa"]
+shape = SubResource("A_Lousa")
+
+[node name="CarteiraVelha" type="Area2D" parent="Interagiveis"]
+position = Vector2(72, 478)
+script = ExtResource("7_inter")
+texto = "Uma carteira de madeira, bem mais velha que as outras. Ninguém tirou ela daqui."
+altura_do_aviso = 60.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/CarteiraVelha"]
+shape = SubResource("A_CarteiraVelha")
+
+[node name="Portas" type="Node2D" parent="."]
+
+[node name="SaidaCorredor" type="Area2D" parent="Portas"]
+position = Vector2(156, 520)
+script = ExtResource("8_porta")
+cena_destino = "res://cenas/fases/teste_corredor.tscn"
+entrada_destino = "porta_d13"
+automatica = true
+
+[node name="Forma" type="CollisionShape2D" parent="Portas/SaidaCorredor"]
+shape = SubResource("P_SaidaCorredor")
+
+[node name="PortaLateral" type="Area2D" parent="Portas"]
+position = Vector2(918, 360)
+script = ExtResource("8_porta")
+trancada = true
+texto = "A outra porta da sala. Trancada por fora."
+altura_do_aviso = 50.0
+
+[node name="Forma" type="CollisionShape2D" parent="Portas/PortaLateral"]
+shape = SubResource("P_PortaLateral")
+
+[node name="Entradas" type="Node2D" parent="."]
+
+[node name="corredor" type="Marker2D" parent="Entradas"]
+position = Vector2(156, 478)
+script = ExtResource("9_entrada")
+olhando = Vector2(0, -1)
+
+[node name="Recortes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="CadeirasEsquerda" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 490)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -490)
+polygon = PackedVector2Array(168, 312, 448, 312, 448, 500, 168, 500)
+base = 490.0
+
+[node name="CadeirasDireita" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 490)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -490)
+polygon = PackedVector2Array(528, 312, 798, 312, 798, 500, 528, 500)
+base = 490.0
+
+[node name="MesaProfessor" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 315)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -315)
+polygon = PackedVector2Array(278, 226, 398, 226, 398, 318, 278, 318)
+base = 315.0
+
+[node name="Planta" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 290)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -290)
+polygon = PackedVector2Array(58, 180, 118, 180, 118, 292, 58, 292)
+base = 290.0
+
+[node name="CarteiraVelha" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 462)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -462)
+polygon = PackedVector2Array(32, 372, 112, 372, 112, 470, 32, 470)
+base = 462.0
+
+[node name="Bia" parent="." instance=ExtResource("3_bia")]
+position = Vector2(156, 478)
+
+[node name="Ambiente" type="AudioStreamPlayer" parent="." groups=["som_em_loop"]]
+stream = ExtResource("4_amb")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"
+
+[node name="ArCondicionado" type="AudioStreamPlayer2D" parent="." groups=["som_em_loop"]]
+position = Vector2(765, 105)
+stream = ExtResource("s0")
+autoplay = true
+max_distance = 450.0
+bus = &"SFX"
+
+[node name="HUD" parent="." instance=ExtResource("6_hud")]

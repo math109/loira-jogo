@@ -1,0 +1,188 @@
+[gd_scene load_steps=23 format=3]
+
+[ext_resource type="Script" path="res://scripts/fases/fase.gd" id="1_fase"]
+[ext_resource type="Texture2D" path="res://assets/cenarios/sala_1998.png" id="2_fundo"]
+[ext_resource type="PackedScene" path="res://cenas/personagens/bia.tscn" id="3_bia"]
+[ext_resource type="AudioStream" path="res://assets/audio/musica/06_memoria_marina.ogg" id="4_amb"]
+[ext_resource type="Script" path="res://scripts/objetos/interagivel.gd" id="7_inter"]
+[ext_resource type="Script" path="res://scripts/objetos/porta.gd" id="8_porta"]
+[ext_resource type="Script" path="res://scripts/fases/entrada.gd" id="9_entrada"]
+[ext_resource type="Script" path="res://scripts/fases/recorte.gd" id="10_recorte"]
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeTopo"]
+size = Vector2(960, 245)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeEsquerda"]
+size = Vector2(40, 640)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeDireita"]
+size = Vector2(30, 640)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeBaixoEsquerda"]
+size = Vector2(108, 140)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeBaixoDireita"]
+size = Vector2(756, 140)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_FundoDaPorta"]
+size = Vector2(100, 56)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_MesaProfessor"]
+size = Vector2(120, 36)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_Lixeira"]
+size = Vector2(30, 63)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_ArmarioMadeira"]
+size = Vector2(150, 53)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_FiltroDeBarro"]
+size = Vector2(44, 46)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_CarteiraVelha"]
+size = Vector2(76, 34)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_CadeirasEsquerda"]
+size = Vector2(276, 150)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_CadeirasDireita"]
+size = Vector2(266, 150)
+
+[sub_resource type="RectangleShape2D" id="A_Lousa"]
+size = Vector2(140, 20)
+
+[node name="SalaAula1998" type="Node2D"]
+script = ExtResource("1_fase")
+como_marina = true
+
+[node name="Escuridao" type="CanvasModulate" parent="."]
+color = Color(0.82, 0.78, 0.7, 1)
+
+[node name="Fundo" type="Sprite2D" parent="."]
+texture = ExtResource("2_fundo")
+centered = false
+
+[node name="Paredes" type="StaticBody2D" parent="."]
+
+[node name="ParedeTopo" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(480, 122)
+shape = SubResource("S_Paredes_ParedeTopo")
+
+[node name="ParedeEsquerda" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(20, 320)
+shape = SubResource("S_Paredes_ParedeEsquerda")
+
+[node name="ParedeDireita" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(945, 320)
+shape = SubResource("S_Paredes_ParedeDireita")
+
+[node name="ParedeBaixoEsquerda" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(54, 570)
+shape = SubResource("S_Paredes_ParedeBaixoEsquerda")
+
+[node name="ParedeBaixoDireita" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(582, 570)
+shape = SubResource("S_Paredes_ParedeBaixoDireita")
+
+[node name="FundoDaPorta" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(156, 612)
+shape = SubResource("S_Paredes_FundoDaPorta")
+
+[node name="Moveis" type="StaticBody2D" parent="."]
+
+[node name="MesaProfessor" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(340, 300)
+shape = SubResource("S_Moveis_MesaProfessor")
+
+[node name="Lixeira" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(420, 276.5)
+shape = SubResource("S_Moveis_Lixeira")
+
+[node name="ArmarioMadeira" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(790, 271.5)
+shape = SubResource("S_Moveis_ArmarioMadeira")
+
+[node name="FiltroDeBarro" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(898, 477)
+shape = SubResource("S_Moveis_FiltroDeBarro")
+
+[node name="CarteiraVelha" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(72, 445)
+shape = SubResource("S_Moveis_CarteiraVelha")
+
+[node name="CadeirasEsquerda" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(308, 415)
+shape = SubResource("S_Moveis_CadeirasEsquerda")
+
+[node name="CadeirasDireita" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(662, 415)
+shape = SubResource("S_Moveis_CadeirasDireita")
+
+[node name="Interagiveis" type="Node2D" parent="."]
+
+[node name="Lousa" type="Area2D" parent="Interagiveis"]
+position = Vector2(520, 258)
+script = ExtResource("7_inter")
+acao = 0
+texto = "No canto da lousa, a data: 12/03/1998."
+altura_do_aviso = 60.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/Lousa"]
+shape = SubResource("A_Lousa")
+
+[node name="Portas" type="Node2D" parent="."]
+
+[node name="Entradas" type="Node2D" parent="."]
+
+[node name="inicio" type="Marker2D" parent="Entradas"]
+position = Vector2(156, 478)
+script = ExtResource("9_entrada")
+olhando = Vector2(0, -1)
+
+[node name="Recortes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="CadeirasEsquerda" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 490)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -490)
+polygon = PackedVector2Array(168, 312, 448, 312, 448, 500, 168, 500)
+base = 490.0
+
+[node name="CadeirasDireita" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 490)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -490)
+polygon = PackedVector2Array(528, 312, 798, 312, 798, 500, 528, 500)
+base = 490.0
+
+[node name="MesaProfessor" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 318)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -318)
+polygon = PackedVector2Array(278, 240, 404, 240, 404, 322, 278, 322)
+base = 318.0
+
+[node name="FiltroDeBarro" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 500)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -500)
+polygon = PackedVector2Array(872, 385, 924, 385, 924, 505, 872, 505)
+base = 500.0
+
+[node name="CarteiraVelha" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 462)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -462)
+polygon = PackedVector2Array(32, 376, 112, 376, 112, 472, 32, 472)
+base = 462.0
+
+[node name="Bia" parent="." instance=ExtResource("3_bia")]
+position = Vector2(156, 478)
+
+[node name="Ambiente" type="AudioStreamPlayer" parent="." groups=["som_em_loop"]]
+stream = ExtResource("4_amb")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"
+

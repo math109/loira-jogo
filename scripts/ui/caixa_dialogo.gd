@@ -58,10 +58,14 @@ func iniciar_dados(dados: Dictionary, no_inicial := "inicio", nome := "diálogo"
 
 
 ## Atalho: um pensamento curto da Bia, de um nó só (usado ao inspecionar objetos).
+## Numa memória de 1998, quem pensa é a Marina.
 func pensar(texto_do_pensamento: String) -> void:
+	var quem := {"nome": "Bia", "retrato": "res://assets/retratos/bia.png", "cor": "#e8dcff"}
+	if Memoria.ativa:
+		quem = {"nome": "Marina", "retrato": "res://assets/retratos/marina.png", "cor": "#ffe6a8"}
 	iniciar_dados({
-		"personagens": {"BIA": {"nome": "Bia", "retrato": "res://assets/retratos/bia.png", "cor": "#e8dcff"}},
-		"nos": {"inicio": {"quem": "BIA", "tipo": "pensamento", "texto": texto_do_pensamento, "proximo": "fim"}},
+		"personagens": {"EU": quem},
+		"nos": {"inicio": {"quem": "EU", "tipo": "pensamento", "texto": texto_do_pensamento, "proximo": "fim"}},
 	})
 
 

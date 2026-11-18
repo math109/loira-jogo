@@ -57,3 +57,51 @@ não mexem em nada do jogo. Para usar:
 1. Extraia o zip numa pasta nova (não por cima de uma das antigas).
 2. Abra o `project.godot` no Godot. Na primeira vez ele reimporta os assets — pode levar um minuto.
 3. **F5**. O jogo começa pelo menu.
+
+---
+
+# Sprint A da Lara — fases novas (18/11/2026, 20h)
+
+Pacote com 6 arquivos, conferido e integrado.
+
+**Arquivos novos**
+
+| Arquivo | O que é |
+|---|---|
+| `cenas/fases/sala_2026.tscn` | sala de aula de hoje (cena 1.4) — chega pela porta **D-13** do corredor |
+| `cenas/memorias/sala_1998.tscn` | a mesma sala em 1998, jogando como a Marina (`como_marina = true`) |
+| `cenas/memorias/banheiro_1998.tscn` | o banheiro na noite do trote, como a Marina |
+| `aulas/fases_sprint_a.md` | o guia de revisão dela |
+
+**Arquivos alterados** (os dois são acréscimos, nada foi removido)
+
+- `cenas/fases/teste_corredor.tscn` — ganhou a porta `PortaD13` e a entrada `porta_d13`.
+- `scripts/ui/caixa_dialogo.gd` — em `pensar()`, dentro de uma memória o pensamento
+  sai com o nome e o retrato da **Marina** em vez da Bia (usa `Memoria.ativa`).
+  Os efeitos `memoria`, `sair_memoria` e `fragmento` da Aula 5 Parte 3 continuam lá.
+
+## Verificações feitas
+
+- A Lara trabalhou **na base certa** (a mesma deste repositório): os dois arquivos
+  alterados são acréscimos limpos sobre a versão atual, sem desfazer a Aula 5.
+- `Memoria.ativa` existe mesmo no autoload `Memoria` — a linha nova dela não quebra.
+- Todos os `res://` das 3 fases novas existem (cenários, áudios, scripts, `bia.tscn`, `hud.tscn`).
+- As portas fecham o circuito nos dois sentidos:
+  `corredor → sala_2026` (entrada `corredor`) e `sala_2026 → corredor` (entrada `porta_d13`).
+  As outras portas do jogo continuam certas.
+- `PortaLateral` da sala 2026 é `trancada = true` de propósito: não precisa de destino.
+- As 3 fases têm a estrutura que o `fase.gd` espera (`Fundo`, `Bia`, `Entradas`, `Recortes`).
+  As duas memórias não têm HUD, o que está certo: a Marina não tem lanterna.
+
+## Arrumado na integração
+
+Cinco cenas tinham `parent="."instance=` sem espaço no nó da Bia
+(`memoria_1`, `porta_escada`, `sala_2026`, `sala_1998`, `banheiro_1998`).
+O Godot aceita assim, mas ficou padronizado com espaço. Só isso mudou nessas linhas.
+
+## Para revisar no Godot (não dá para testar por fora)
+
+- Andar nas 3 fases com **Debug → Visible Collision Shapes** ligado.
+- Na sala 2026, a `SaidaCorredor` é **automática** e fica em y=520; a Bia nasce em y=478,
+  a 32 px dela. Entre pela D-13 e confira que ela não volta sozinha para o corredor.
+  Se voltar, suba a entrada `corredor` uns 20 px no editor.

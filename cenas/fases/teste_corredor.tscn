@@ -65,6 +65,9 @@ size = Vector2(90, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3w5fx"]
 size = Vector2(50, 60)
 
+[sub_resource type="RectangleShape2D" id="P_D13"]
+size = Vector2(50, 22)
+
 [node name="Corredor" type="Node2D" unique_id=1332713042]
 script = ExtResource("1_fase")
 dialogo_ao_entrar = "res://dados/dialogos/cap1_corredor.json"
@@ -237,12 +240,26 @@ metadata/_custom_type_script = "uid://baheiuy0qhml5"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portas/Escada" unique_id=632396362]
 shape = SubResource("RectangleShape2D_3w5fx")
 
+[node name="PortaD13" type="Area2D" parent="Portas"]
+position = Vector2(432, 236)
+script = ExtResource("8_701ok")
+altura_do_aviso = 60.0
+cena_destino = "res://cenas/fases/sala_2026.tscn"
+entrada_destino = "corredor"
+
+[node name="Forma" type="CollisionShape2D" parent="Portas/PortaD13"]
+shape = SubResource("P_D13")
+
 [node name="Entradas" type="Node2D" parent="." unique_id=1076629128]
 
 [node name="porta_professores" type="Marker2D" parent="Entradas" unique_id=1075811941]
 position = Vector2(68, 272)
 script = ExtResource("9_vl0sm")
 metadata/_custom_type_script = "uid://pii8dnc00ogs"
+
+[node name="porta_d13" type="Marker2D" parent="Entradas"]
+position = Vector2(432, 272)
+script = ExtResource("9_vl0sm")
 
 [node name="saida_baixo" type="Marker2D" parent="Entradas" unique_id=618013338]
 position = Vector2(487, 490)
