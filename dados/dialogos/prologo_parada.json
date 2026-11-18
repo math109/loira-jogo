@@ -1,0 +1,48 @@
+{
+  "personagens": {
+	"BIA": {
+	  "nome": "Bia",
+	  "retrato": "res://assets/retratos/bia.png",
+	  "cor": "#e8dcff"
+	},
+	"THEO": {
+	  "nome": "Théo",
+	  "cor": "#ffd08a"
+	},
+	"YASMIN": {
+	  "nome": "Yasmin",
+	  "cor": "#9ad8ff"
+	},
+	"DAVI": {
+	  "nome": "Davi",
+	  "cor": "#c8e6a0"
+	}
+  },
+  "nos": {
+	"inicio": {
+	  "quem": "THEO",
+	  "texto": "Primeiro dia de aula e eu já estou cansado. Isso é um recorde, viu?",
+	  "proximo": "yasmin1"
+	},
+	"yasmin1": {
+	  "quem": "YASMIN",
+	  "texto": "Você só ficou acordado a viagem inteira porque estava falando.",
+	  "proximo": "davi1"
+	},
+	"davi1": {
+	  "quem": "DAVI",
+	  "texto": "(olhando o celular) Será que a gente vai achar o bloco certo? A mensagem do coordenador era meio confusa.",
+	  "proximo": "bia1"
+	},
+	"bia1": {
+	  "quem": "BIA",
+	  "texto": "(baixinho) Fica tranquilo. Eu salvei o mapa.",
+	  "proximo": "theo2"
+	},
+	"theo2": {
+	  "quem": "THEO",
+	  "texto": "Ela fala! Gente, a Bia fala! Vai ser a nossa guia.",
+	  "proximo": "fim"
+	}
+  }
+}

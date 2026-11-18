@@ -1,0 +1,25 @@
+{
+  "personagens": {
+	"MARINA": {
+	  "nome": "Marina",
+	  "cor": "#f2d16b"
+	}
+  },
+  "nos": {
+	"inicio": {
+	  "quem": "MARINA",
+	  "texto": "(para si, baixinho) Mãe, cheguei. É bem maior do que eu imaginava.",
+	  "proximo": "m2"
+	},
+	"m2": {
+	  "quem": "MARINA",
+	  "texto": "Tudo bem. Eu só preciso fazer um amigo.",
+	  "proximo": "m3"
+	},
+	"m3": {
+	  "quem": "MARINA",
+	  "texto": "(para o reflexo, tentando sorrir) Ficou… diferente. Ficou bom. Acho.",
+	  "proximo": "fim"
+	}
+  }
+}

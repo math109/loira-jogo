@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/fases/recorte.gd" id="1_recorte"]
+
+[node name="Banco" type="Polygon2D"]
+position = Vector2(0, 270)
+offset = Vector2(0, -270)
+texture_offset = Vector2(0, 270)
+polygon = PackedVector2Array(96, 221, 120, 221, 120, 240, 125, 240, 125, 221, 150, 221, 150, 240, 155, 240, 155, 221, 177, 221, 177, 240, 183, 240, 183, 221, 208, 221, 208, 258, 203, 258, 203, 272, 198, 272, 198, 258, 105, 258, 105, 272, 99, 272, 99, 258, 96, 258)
+script = ExtResource("1_recorte")
+base = 270.0

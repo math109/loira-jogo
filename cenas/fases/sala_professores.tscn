@@ -1,0 +1,240 @@
+[gd_scene format=3 uid="uid://cneb3f2mrhsay"]
+
+[ext_resource type="Script" path="res://scripts/objetos/ponto_seguro.gd" id="ps_1"]
+[ext_resource type="Script" uid="uid://bfbwmdsu28epy" path="res://scripts/fases/fase.gd" id="1_fase"]
+[ext_resource type="Texture2D" uid="uid://3vm5nkgbf1is" path="res://assets/cenarios/sala_professores.png" id="2_fundo"]
+[ext_resource type="PackedScene" path="res://cenas/personagens/bia.tscn" id="3_bia"]
+[ext_resource type="AudioStream" uid="uid://dy3s83t4psus0" path="res://assets/audio/musica/02_ambiente_base.ogg" id="4_amb"]
+[ext_resource type="PackedScene" uid="uid://b71q8c0tmawon" path="res://cenas/ui/hud.tscn" id="6_hud"]
+[ext_resource type="Script" uid="uid://clu5vwgqnui13" path="res://scripts/objetos/interagivel.gd" id="7_inter"]
+[ext_resource type="Script" uid="uid://baheiuy0qhml5" path="res://scripts/objetos/porta.gd" id="8_porta"]
+[ext_resource type="Script" uid="uid://pii8dnc00ogs" path="res://scripts/fases/entrada.gd" id="9_entrada"]
+[ext_resource type="Script" uid="uid://dtq12tta7xjqd" path="res://scripts/fases/recorte.gd" id="10_recorte"]
+[ext_resource type="AudioStream" uid="uid://bovynmx2jybae" path="res://assets/audio/ambiente/21_ar_condicionado.wav" id="s0"]
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeTopo"]
+size = Vector2(960, 248)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeEsquerda"]
+size = Vector2(40, 640)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeDireita"]
+size = Vector2(40, 640)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeBaixoEsquerda"]
+size = Vector2(436, 124)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_ParedeBaixoDireita"]
+size = Vector2(420, 124)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_Porta"]
+size = Vector2(76, 184)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_Planta"]
+size = Vector2(36, 42)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_Sofa"]
+size = Vector2(108, 37)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_Mesinha"]
+size = Vector2(74, 34)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_Cadeira"]
+size = Vector2(33, 30)
+
+[sub_resource type="RectangleShape2D" id="A_Caderno"]
+size = Vector2(171, 54)
+
+[sub_resource type="RectangleShape2D" id="A_Cafeteira"]
+size = Vector2(50, 20)
+
+[sub_resource type="RectangleShape2D" id="A_Galao"]
+size = Vector2(36, 20)
+
+[sub_resource type="RectangleShape2D" id="A_Armarios"]
+size = Vector2(240, 20)
+
+[sub_resource type="RectangleShape2D" id="P_PortaCorredor"]
+size = Vector2(123, 120)
+
+[node name="SalaProfessores" type="Node2D" unique_id=1737623763]
+script = ExtResource("1_fase")
+
+[node name="Escuridao" type="CanvasModulate" parent="." unique_id=827913788]
+color = Color(0.16, 0.15, 0.2, 1)
+
+[node name="Fundo" type="Sprite2D" parent="." unique_id=1597363984]
+texture = ExtResource("2_fundo")
+centered = false
+
+[node name="Paredes" type="StaticBody2D" parent="." unique_id=1814935510]
+
+[node name="ParedeTopo" type="CollisionShape2D" parent="Paredes" unique_id=1682938106]
+position = Vector2(480, 124)
+shape = SubResource("S_Paredes_ParedeTopo")
+
+[node name="ParedeEsquerda" type="CollisionShape2D" parent="Paredes" unique_id=85686092]
+position = Vector2(20, 320)
+shape = SubResource("S_Paredes_ParedeEsquerda")
+
+[node name="ParedeDireita" type="CollisionShape2D" parent="Paredes" unique_id=524514291]
+position = Vector2(940, 320)
+shape = SubResource("S_Paredes_ParedeDireita")
+
+[node name="ParedeBaixoEsquerda" type="CollisionShape2D" parent="Paredes" unique_id=352023170]
+position = Vector2(218, 578)
+shape = SubResource("S_Paredes_ParedeBaixoEsquerda")
+
+[node name="ParedeBaixoDireita" type="CollisionShape2D" parent="Paredes" unique_id=1901451553]
+position = Vector2(750, 578)
+shape = SubResource("S_Paredes_ParedeBaixoDireita")
+
+[node name="Porta" type="CollisionShape2D" parent="Paredes" unique_id=1730361587]
+position = Vector2(484, 547)
+shape = SubResource("S_Paredes_Porta")
+
+[node name="Moveis" type="StaticBody2D" parent="." unique_id=536508916]
+
+[node name="Planta" type="CollisionShape2D" parent="Moveis" unique_id=536316283]
+position = Vector2(72, 349)
+shape = SubResource("S_Moveis_Planta")
+
+[node name="Sofa" type="CollisionShape2D" parent="Moveis" unique_id=847936035]
+position = Vector2(159, 351.5)
+shape = SubResource("S_Moveis_Sofa")
+
+[node name="Mesinha" type="CollisionShape2D" parent="Moveis" unique_id=925468647]
+position = Vector2(157, 395)
+shape = SubResource("S_Moveis_Mesinha")
+
+[node name="Cadeira" type="CollisionShape2D" parent="Moveis" unique_id=503516737]
+position = Vector2(233.5, 349)
+shape = SubResource("S_Moveis_Cadeira")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Moveis" unique_id=1870030108]
+polygon = PackedVector2Array(475, 322, 788, 322, 788, 345, 812, 345, 812, 410, 748, 412, 747, 437, 475, 433, 475, 433, 474, 433, 450, 428, 450, 345, 475, 345)
+
+[node name="Interagiveis" type="Node2D" parent="." unique_id=2061321900]
+
+[node name="Caderno" type="Area2D" parent="Interagiveis" unique_id=727631735]
+position = Vector2(578, 320)
+script = ExtResource("ps_1")
+texto = "Um caderno aberto em cima da mesa. Alguém anotou os horários da ronda do Raimundo."
+altura_do_aviso = 30.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/Caderno" unique_id=1315597208]
+position = Vector2(-14.5, 2)
+shape = SubResource("A_Caderno")
+
+[node name="Cafeteira" type="Area2D" parent="Interagiveis" unique_id=1304580006]
+position = Vector2(470, 262)
+script = ExtResource("7_inter")
+texto = "Café frio de ontem. Mesmo assim, o cheiro acalma."
+altura_do_aviso = 60.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/Cafeteira" unique_id=1985426583]
+shape = SubResource("A_Cafeteira")
+
+[node name="Galao" type="Area2D" parent="Interagiveis" unique_id=1725396212]
+position = Vector2(552, 262)
+script = ExtResource("7_inter")
+texto = "O galão de água está quase vazio."
+altura_do_aviso = 60.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/Galao" unique_id=58008388]
+shape = SubResource("A_Galao")
+
+[node name="Armarios" type="Area2D" parent="Interagiveis" unique_id=1147738467]
+position = Vector2(170, 262)
+script = ExtResource("7_inter")
+texto = "Armários dos professores. Todos trancados."
+altura_do_aviso = 70.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/Armarios" unique_id=1794289602]
+shape = SubResource("A_Armarios")
+
+[node name="Portas" type="Node2D" parent="." unique_id=424419305]
+
+[node name="PortaCorredor" type="Area2D" parent="Portas" unique_id=1249607895]
+position = Vector2(504, 444)
+script = ExtResource("8_porta")
+cena_destino = "res://cenas/fases/teste_corredor.tscn"
+entrada_destino = "porta_professores"
+altura_do_aviso = 50.0
+
+[node name="Forma" type="CollisionShape2D" parent="Portas/PortaCorredor" unique_id=1606160617]
+position = Vector2(-21.5, 53)
+shape = SubResource("P_PortaCorredor")
+
+[node name="Entradas" type="Node2D" parent="." unique_id=1212752737]
+
+[node name="porta" type="Marker2D" parent="Entradas" unique_id=1614494494]
+position = Vector2(460, 480)
+script = ExtResource("9_entrada")
+olhando = Vector2(0, -1)
+
+[node name="Recortes" type="Node2D" parent="." unique_id=1886873471]
+y_sort_enabled = true
+
+[node name="MesaReuniao" type="Polygon2D" parent="Recortes" unique_id=938633896]
+position = Vector2(0, 430)
+offset = Vector2(0, -430)
+texture = ExtResource("2_fundo")
+texture_offset = Vector2(0, 430)
+polygon = PackedVector2Array(475, 315, 506, 315, 507, 296, 537, 296, 538, 316, 570, 315, 569, 297, 599, 297, 600, 315, 648, 315, 648, 293, 680, 293, 680, 315, 714, 315, 716, 294, 744, 294, 745, 315, 788, 315, 788, 345, 812, 345, 812, 410, 751, 410, 751, 439, 491, 439, 489, 411, 450, 410, 450, 345, 475, 345)
+script = ExtResource("10_recorte")
+base = 430.0
+
+[node name="Sofa" type="Polygon2D" parent="Recortes" unique_id=22857306]
+position = Vector2(0, 375)
+offset = Vector2(0, -375)
+texture = ExtResource("2_fundo")
+texture_offset = Vector2(0, 375)
+polygon = PackedVector2Array(105, 312, 213, 312, 213, 383, 105, 383)
+script = ExtResource("10_recorte")
+base = 375.0
+
+[node name="Planta" type="Polygon2D" parent="Recortes" unique_id=563098796]
+position = Vector2(0, 380)
+offset = Vector2(0, -380)
+texture = ExtResource("2_fundo")
+texture_offset = Vector2(0, 380)
+polygon = PackedVector2Array(52, 288, 98, 288, 108, 305, 108, 335, 100, 345, 102, 382, 63, 382, 63, 345, 42, 335, 42, 300)
+script = ExtResource("10_recorte")
+base = 380.0
+
+[node name="Mesinha" type="Polygon2D" parent="Recortes" unique_id=2085646945]
+position = Vector2(0, 426)
+offset = Vector2(0, -426)
+texture = ExtResource("2_fundo")
+texture_offset = Vector2(0, 426)
+polygon = PackedVector2Array(130, 385, 207, 385, 207, 430, 130, 430)
+script = ExtResource("10_recorte")
+base = 426.0
+
+[node name="Cadeira" type="Polygon2D" parent="Recortes" unique_id=1730515469]
+position = Vector2(0, 383)
+offset = Vector2(0, -383)
+texture = ExtResource("2_fundo")
+texture_offset = Vector2(0, 383)
+polygon = PackedVector2Array(228, 325, 260, 325, 260, 385, 228, 385)
+script = ExtResource("10_recorte")
+base = 383.0
+
+[node name="Bia" parent="." unique_id=711450303 instance=ExtResource("3_bia")]
+position = Vector2(466, 483)
+
+[node name="Ambiente" type="AudioStreamPlayer" parent="." unique_id=844893189 groups=["som_em_loop"]]
+stream = ExtResource("4_amb")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"
+
+[node name="ArCondicionado" type="AudioStreamPlayer2D" parent="." unique_id=662734413 groups=["som_em_loop"]]
+position = Vector2(480, 120)
+stream = ExtResource("s0")
+autoplay = true
+max_distance = 500.0
+bus = &"SFX"
+
+[node name="HUD" parent="." unique_id=360106388 instance=ExtResource("6_hud")]

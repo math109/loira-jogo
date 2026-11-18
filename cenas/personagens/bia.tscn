@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/personagens/bia.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/personagens/bia.png" id="2_sprite"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/passosConcreto.mp3" id="3_passos"]
+
+[ext_resource type="Script" path="res://scripts/personagens/lanterna.gd" id="4_lanterna"]
+[ext_resource type="Texture2D" path="res://assets/luz/cone_lanterna.png" id="5_cone"]
+[ext_resource type="Texture2D" path="res://assets/luz/halo.png" id="6_halo"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/13_lanterna_ligar.wav" id="7_ligar"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/14_lanterna_desligar.wav" id="8_desligar"]
+
+[sub_resource type="RectangleShape2D" id="Shape_pes"]
+size = Vector2(14, 6)
+
+[node name="Bia" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_script")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_sprite")
+offset = Vector2(0, -28)
+hframes = 3
+vframes = 4
+
+[node name="Pes" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("Shape_pes")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -16)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+process_callback = 0
+
+[node name="Passos" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_passos")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="Halo" type="PointLight2D" parent="."]
+position = Vector2(0, -12)
+color = Color(0.86, 0.9, 1, 1)
+energy = 0.45
+texture = ExtResource("6_halo")
+texture_scale = 0.85
+
+[node name="Lanterna" type="PointLight2D" parent="."]
+position = Vector2(0, -14)
+color = Color(0.92, 0.95, 1, 1)
+energy = 1.2
+texture_scale = 1.25
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("5_cone")
+script = ExtResource("4_lanterna")
+
+[node name="SomLigar" type="AudioStreamPlayer" parent="Lanterna"]
+stream = ExtResource("7_ligar")
+bus = &"SFX"
+
+[node name="SomDesligar" type="AudioStreamPlayer" parent="Lanterna"]
+stream = ExtResource("8_desligar")
+bus = &"SFX"

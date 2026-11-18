@@ -1,0 +1,205 @@
+[gd_scene load_steps=24 format=3]
+
+[ext_resource type="Script" path="res://scripts/fases/fase.gd" id="1_fase"]
+[ext_resource type="Texture2D" path="res://assets/cenarios/campus_1998.png" id="2_fundo"]
+[ext_resource type="PackedScene" path="res://cenas/personagens/bia.tscn" id="3_bia"]
+[ext_resource type="AudioStream" path="res://assets/audio/musica/06_memoria_marina.ogg" id="4_amb"]
+[ext_resource type="Script" path="res://scripts/objetos/interagivel.gd" id="7_inter"]
+[ext_resource type="Script" path="res://scripts/objetos/porta.gd" id="8_porta"]
+[ext_resource type="Script" path="res://scripts/fases/entrada.gd" id="9_entrada"]
+[ext_resource type="Script" path="res://scripts/fases/recorte.gd" id="10_recorte"]
+[ext_resource type="AudioStream" path="res://assets/audio/ambiente/onibus.mp3" id="s0"]
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_Predio"]
+size = Vector2(960, 290)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_Rua"]
+size = Vector2(960, 140)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_BordaEsquerda"]
+size = Vector2(20, 640)
+
+[sub_resource type="RectangleShape2D" id="S_Paredes_BordaDireita"]
+size = Vector2(20, 640)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_Orelhao"]
+size = Vector2(12, 14)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_BancoEsquerdo"]
+size = Vector2(30, 80)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_BancoDireito"]
+size = Vector2(30, 80)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_Bicicletario"]
+size = Vector2(260, 26)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_Arbustos"]
+size = Vector2(70, 20)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_Plantas"]
+size = Vector2(100, 24)
+
+[sub_resource type="RectangleShape2D" id="S_Moveis_BancoParede"]
+size = Vector2(106, 16)
+
+[sub_resource type="RectangleShape2D" id="A_Mural"]
+size = Vector2(90, 20)
+
+[sub_resource type="RectangleShape2D" id="A_PortaDeVidro"]
+size = Vector2(100, 20)
+
+[sub_resource type="RectangleShape2D" id="A_Loirinha"]
+size = Vector2(50, 20)
+
+[node name="Memoria1" type="Node2D"]
+script = ExtResource("1_fase")
+como_marina = true
+dialogo_ao_entrar = "res://dados/dialogos/memoria_1_chegada.json"
+
+[node name="Escuridao" type="CanvasModulate" parent="."]
+color = Color(0.82, 0.78, 0.7, 1)
+
+[node name="Fundo" type="Sprite2D" parent="."]
+texture = ExtResource("2_fundo")
+centered = false
+
+[node name="Paredes" type="StaticBody2D" parent="."]
+
+[node name="Predio" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(480, 145)
+shape = SubResource("S_Paredes_Predio")
+
+[node name="Rua" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(480, 575)
+shape = SubResource("S_Paredes_Rua")
+
+[node name="BordaEsquerda" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(-10, 320)
+shape = SubResource("S_Paredes_BordaEsquerda")
+
+[node name="BordaDireita" type="CollisionShape2D" parent="Paredes"]
+position = Vector2(970, 320)
+shape = SubResource("S_Paredes_BordaDireita")
+
+[node name="Moveis" type="StaticBody2D" parent="."]
+
+[node name="Orelhao" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(9, 470)
+shape = SubResource("S_Moveis_Orelhao")
+
+[node name="BancoEsquerdo" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(361, 358)
+shape = SubResource("S_Moveis_BancoEsquerdo")
+
+[node name="BancoDireito" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(599, 358)
+shape = SubResource("S_Moveis_BancoDireito")
+
+[node name="Bicicletario" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(785, 394)
+shape = SubResource("S_Moveis_Bicicletario")
+
+[node name="Arbustos" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(118, 350)
+shape = SubResource("S_Moveis_Arbustos")
+
+[node name="Plantas" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(672, 345)
+shape = SubResource("S_Moveis_Plantas")
+
+[node name="BancoParede" type="CollisionShape2D" parent="Moveis"]
+position = Vector2(236, 312)
+shape = SubResource("S_Moveis_BancoParede")
+
+[node name="Interagiveis" type="Node2D" parent="."]
+
+[node name="Mural" type="Area2D" parent="Interagiveis"]
+position = Vector2(345, 300)
+script = ExtResource("7_inter")
+acao = 1
+dialogo = "res://dados/dialogos/memoria_1_mural.json"
+so_uma_vez = true
+altura_do_aviso = 80.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/Mural"]
+shape = SubResource("A_Mural")
+
+[node name="PortaDeVidro" type="Area2D" parent="Interagiveis"]
+position = Vector2(480, 300)
+script = ExtResource("7_inter")
+acao = 1
+dialogo = "res://dados/dialogos/memoria_1_reflexo.json"
+so_uma_vez = true
+altura_do_aviso = 90.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/PortaDeVidro"]
+shape = SubResource("A_PortaDeVidro")
+
+[node name="Loirinha" type="Area2D" parent="Interagiveis"]
+position = Vector2(575, 300)
+script = ExtResource("7_inter")
+acao = 1
+dialogo = "res://dados/dialogos/memoria_1_loirinha.json"
+so_uma_vez = true
+altura_do_aviso = 85.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/Loirinha"]
+shape = SubResource("A_Loirinha")
+
+[node name="Portas" type="Node2D" parent="."]
+
+[node name="Entradas" type="Node2D" parent="."]
+
+[node name="inicio" type="Marker2D" parent="Entradas"]
+position = Vector2(480, 420)
+script = ExtResource("9_entrada")
+olhando = Vector2(0, -1)
+
+[node name="Recortes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="BancoEsquerdo" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 398)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -398)
+polygon = PackedVector2Array(344, 316, 379, 316, 379, 400, 344, 400)
+base = 398.0
+
+[node name="BancoDireito" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 398)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -398)
+polygon = PackedVector2Array(582, 316, 617, 316, 617, 400, 582, 400)
+base = 398.0
+
+[node name="Orelhao" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 475)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -475)
+polygon = PackedVector2Array(4, 365, 15, 350, 78, 350, 78, 402, 14, 402, 14, 478, 4, 478)
+base = 475.0
+
+[node name="Bicicletario" type="Polygon2D" parent="Recortes"]
+position = Vector2(0, 412)
+script = ExtResource("10_recorte")
+offset = Vector2(0, -412)
+polygon = PackedVector2Array(655, 330, 915, 330, 915, 415, 655, 415)
+base = 412.0
+
+[node name="Bia" parent="."instance=ExtResource("3_bia")]
+position = Vector2(480, 420)
+
+[node name="Ambiente" type="AudioStreamPlayer" parent="." groups=["som_em_loop"]]
+stream = ExtResource("4_amb")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"
+
+[node name="Onibus" type="AudioStreamPlayer2D" parent="." groups=["som_em_loop"]]
+position = Vector2(800, 560)
+stream = ExtResource("s0")
+autoplay = true
+max_distance = 500.0
+bus = &"SFX"
+

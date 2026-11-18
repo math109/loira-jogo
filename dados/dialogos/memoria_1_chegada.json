@@ -1,0 +1,30 @@
+{
+  "personagens": {
+    "MARINA": {
+      "nome": "Marina",
+      "retrato": "res://assets/retratos/marina.png",
+      "cor": "#ffe6a8"
+    }
+  },
+  "nos": {
+    "inicio": {
+      "quem": "MARINA",
+      "tipo": "pensamento",
+      "texto": "O ônibus vai embora. A carta da mãe está no bolso, dobrada em quatro.",
+      "proximo": "m1"
+    },
+    "m1": {
+      "quem": "MARINA",
+      "texto": "(baixinho) Mãe, cheguei. É bem maior do que eu imaginava.",
+      "proximo": "m2"
+    },
+    "m2": {
+      "quem": "MARINA",
+      "texto": "Tudo bem. Eu só preciso fazer um amigo.",
+      "efeitos": {
+        "fragmento": "F01"
+      },
+      "proximo": "fim"
+    }
+  }
+}

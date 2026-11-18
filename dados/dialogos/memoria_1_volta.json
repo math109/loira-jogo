@@ -1,0 +1,36 @@
+{
+  "personagens": {
+    "BIA": {
+      "nome": "Bia",
+      "retrato": "res://assets/retratos/bia.png",
+      "cor": "#e8dcff"
+    },
+    "RAIMUNDO": {
+      "nome": "Rádio",
+      "retrato": "res://assets/retratos/raimundo_radio.png",
+      "cor": "#b8e0a8"
+    }
+  },
+  "nos": {
+    "inicio": {
+      "quem": "BIA",
+      "tipo": "pensamento",
+      "texto": "Ela fingiu que não viu. Eu conheço isso.",
+      "proximo": "b2"
+    },
+    "b2": {
+      "quem": "BIA",
+      "tipo": "pensamento",
+      "texto": "O que foi isso? Eu estava… dentro dela.",
+      "proximo": "r1"
+    },
+    "r1": {
+      "quem": "RAIMUNDO",
+      "texto": "(rádio, baixo) Viu, né? As coisas dela guardam aquela noite. Encosta nelas e você vê o que ela viveu. É assim que ela conta.",
+      "efeitos": {
+        "flag": "viu_memoria_1"
+      },
+      "proximo": "fim"
+    }
+  }
+}

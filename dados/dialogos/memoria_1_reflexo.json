@@ -1,0 +1,25 @@
+{
+  "personagens": {
+    "MARINA": {
+      "nome": "Marina",
+      "retrato": "res://assets/retratos/marina.png",
+      "cor": "#ffe6a8"
+    }
+  },
+  "nos": {
+    "inicio": {
+      "quem": "MARINA",
+      "tipo": "pensamento",
+      "texto": "Dias depois. O vidro da porta devolve um cabelo que não parece meu. Pintei de loiro, igual ao das meninas da sala. O tom saiu amarelado.",
+      "proximo": "m1"
+    },
+    "m1": {
+      "quem": "MARINA",
+      "texto": "(para o reflexo, tentando sorrir) Ficou… diferente. Ficou bom. Acho.",
+      "efeitos": {
+        "fragmento": "F02"
+      },
+      "proximo": "fim"
+    }
+  }
+}

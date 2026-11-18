@@ -1,0 +1,17 @@
+{
+  "personagens": {
+    "MARINA": {
+      "nome": "Marina",
+      "retrato": "res://assets/retratos/marina.png",
+      "cor": "#ffe6a8"
+    }
+  },
+  "nos": {
+    "inicio": {
+      "quem": "MARINA",
+      "tipo": "pensamento",
+      "texto": "\"TROTE SOLIDÁRIO\". Todo mundo da turma vai. Talvez seja assim que se faz amigo aqui.",
+      "proximo": "fim"
+    }
+  }
+}

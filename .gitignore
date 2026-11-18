@@ -1,0 +1,7 @@
+# Cache do Godot (recriado sozinho)
+.godot/
+
+# Builds exportados
+/build/
+*.exe
+*.pck

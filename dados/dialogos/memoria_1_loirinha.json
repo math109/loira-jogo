@@ -1,0 +1,32 @@
+{
+  "personagens": {
+    "MARINA": {
+      "nome": "Marina",
+      "retrato": "res://assets/retratos/marina.png",
+      "cor": "#ffe6a8"
+    }
+  },
+  "nos": {
+    "inicio": {
+      "quem": "MARINA",
+      "tipo": "pensamento",
+      "texto": "Um papel colado no canto do quadro, com letra grande: \"LOIRINHA\".",
+      "proximo": "m1"
+    },
+    "m1": {
+      "quem": "MARINA",
+      "tipo": "pensamento",
+      "texto": "Atrás de mim, um grupo se afasta rindo. Não olha. Finge que não viu.",
+      "proximo": "m2"
+    },
+    "m2": {
+      "quem": "MARINA",
+      "texto": "…",
+      "efeitos": {
+        "fragmento": "F03",
+        "sair_memoria": "res://dados/dialogos/memoria_1_volta.json"
+      },
+      "proximo": "fim"
+    }
+  }
+}
